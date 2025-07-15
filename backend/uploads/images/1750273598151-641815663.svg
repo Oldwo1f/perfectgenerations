@@ -1,0 +1,224 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <radialGradient id="bgRadialGradient" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" style="stop-color:#0f4545;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a5757;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a3030;stop-opacity:1" />
+    </radialGradient>
+    
+    <linearGradient id="codeWaveGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a9f9f;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#66b2b2;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#2d7d7d;stop-opacity:0.4" />
+    </linearGradient>
+    
+    <linearGradient id="tikiBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d7d7d;stop-opacity:0.1" />
+      <stop offset="50%" style="stop-color:#4a9f9f;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#1a5757;stop-opacity:0.08" />
+    </linearGradient>
+    
+    <!-- Mystical glow -->
+    <filter id="mysticGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Code pattern that transforms -->
+    <pattern id="codePattern" x="0" y="0" width="200" height="50" patternUnits="userSpaceOnUse">
+      <rect width="200" height="50" fill="none"/>
+      <text x="10" y="15" font-family="monospace" font-size="8" fill="#4a9f9f" opacity="0.3">function aiAssist() {</text>
+      <text x="10" y="30" font-family="monospace" font-size="8" fill="#66b2b2" opacity="0.2">  return innovation;</text>
+      <text x="10" y="45" font-family="monospace" font-size="8" fill="#80c5c5" opacity="0.25">}</text>
+    </pattern>
+    
+    <!-- Polynesian pattern -->
+    <pattern id="polyPattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <rect width="80" height="80" fill="none"/>
+      <path d="M40,10 L60,30 L40,50 L20,30 Z M40,30 L60,50 L40,70 L20,50 Z" stroke="#4a9f9f" stroke-width="0.5" fill="none" opacity="0.15"/>
+      <circle cx="40" cy="40" r="3" fill="none" stroke="#66b2b2" stroke-width="0.5" opacity="0.2"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#bgRadialGradient)"/>
+  
+  <!-- Polynesian pattern overlay -->
+  <rect width="1200" height="800" fill="url(#polyPattern)" opacity="0.3"/>
+  
+  <!-- Tiki mask silhouette (very subtle) -->
+  <g transform="translate(600,400) scale(3)" opacity="0.08">
+    <!-- Tiki mask outline -->
+    <path d="M0,-80 Q-30,-80 -40,-50 Q-45,-30 -40,-10 Q-35,10 -30,30 Q-25,50 -15,65 Q0,75 0,75 Q15,65 25,50 Q30,30 35,10 Q40,-10 45,-30 Q40,-50 30,-80 Q0,-80 0,-80 Z" 
+          fill="url(#tikiBg)" stroke="#4a9f9f" stroke-width="0.5"/>
+    
+    <!-- Eyes -->
+    <ellipse cx="-15" cy="-30" rx="8" ry="12" fill="none" stroke="#66b2b2" stroke-width="0.3" opacity="0.6"/>
+    <ellipse cx="15" cy="-30" rx="8" ry="12" fill="none" stroke="#66b2b2" stroke-width="0.3" opacity="0.6"/>
+    
+    <!-- Nose -->
+    <path d="M0,-10 L-5,5 L0,10 L5,5 Z" fill="none" stroke="#4a9f9f" stroke-width="0.3" opacity="0.5"/>
+    
+    <!-- Mouth -->
+    <path d="M-12,25 Q0,35 12,25 Q8,45 0,50 Q-8,45 -12,25 Z" fill="none" stroke="#66b2b2" stroke-width="0.3" opacity="0.6"/>
+    
+    <!-- Forehead patterns -->
+    <path d="M-20,-60 L0,-45 L20,-60" fill="none" stroke="#80c5c5" stroke-width="0.4" opacity="0.4"/>
+    <path d="M-15,-55 L0,-50 L15,-55" fill="none" stroke="#80c5c5" stroke-width="0.3" opacity="0.3"/>
+  </g>
+  
+  <!-- Code transforming into waves -->
+  <g class="code-transformation">
+    <!-- Code lines that morph into waves -->
+    <g transform="translate(0,200)">
+      <!-- First line of code becoming wave -->
+      <path d="M0,0 L200,0 Q300,-10 400,0 Q500,10 600,0 Q700,-5 800,5 Q900,0 1000,-5 Q1100,5 1200,0" 
+            stroke="#4a9f9f" stroke-width="1.5" fill="none" opacity="0.6">
+        <animate attributeName="d" 
+                 values="M0,0 L200,0 Q300,-10 400,0 Q500,10 600,0 Q700,-5 800,5 Q900,0 1000,-5 Q1100,5 1200,0;
+                         M0,5 L200,-5 Q300,-15 400,5 Q500,15 600,-5 Q700,-10 800,10 Q900,5 1000,-10 Q1100,10 1200,5;
+                         M0,0 L200,0 Q300,-10 400,0 Q500,10 600,0 Q700,-5 800,5 Q900,0 1000,-5 Q1100,5 1200,0" 
+                 dur="8s" repeatCount="indefinite"/>
+      </path>
+      
+      <!-- Code text fragments -->
+      <text x="50" y="-10" font-family="monospace" font-size="10" fill="#66b2b2" opacity="0.7">
+        const magic =
+        <animate attributeName="opacity" values="0.7;0.2;0.7" dur="6s" repeatCount="indefinite"/>
+      </text>
+      
+      <text x="350" y="15" font-family="monospace" font-size="9" fill="#80c5c5" opacity="0.5">
+        AI.transform()
+        <animate attributeName="opacity" values="0.5;0.1;0.5" dur="7s" repeatCount="indefinite"/>
+      </text>
+      
+      <text x="650" y="-5" font-family="monospace" font-size="8" fill="#4a9f9f" opacity="0.6">
+        .then(flow)
+        <animate attributeName="opacity" values="0.6;0.2;0.6" dur="5s" repeatCount="indefinite"/>
+      </text>
+    </g>
+    
+    <!-- Second transformation line -->
+    <g transform="translate(0,350)">
+      <path d="M100,0 Q200,15 300,0 Q400,-15 500,10 Q600,0 700,-10 Q800,15 900,0 Q1000,-5 1100,10 L1200,5" 
+            stroke="#66b2b2" stroke-width="1.2" fill="none" opacity="0.5">
+        <animate attributeName="d" 
+                 values="M100,0 Q200,15 300,0 Q400,-15 500,10 Q600,0 700,-10 Q800,15 900,0 Q1000,-5 1100,10 L1200,5;
+                         M100,-5 Q200,20 300,-5 Q400,-20 500,15 Q600,-5 700,-15 Q800,20 900,-5 Q1000,-10 1100,15 L1200,0;
+                         M100,0 Q200,15 300,0 Q400,-15 500,10 Q600,0 700,-10 Q800,15 900,0 Q1000,-5 1100,10 L1200,5" 
+                 dur="10s" repeatCount="indefinite"/>
+      </path>
+      
+      <text x="150" y="-15" font-family="monospace" font-size="9" fill="#4a9f9f" opacity="0.6">
+        while(learning)
+        <animate attributeName="opacity" values="0.6;0.1;0.6" dur="8s" repeatCount="indefinite"/>
+      </text>
+      
+      <text x="500" y="20" font-family="monospace" font-size="8" fill="#80c5c5" opacity="0.4">
+        evolve()
+        <animate attributeName="opacity" values="0.4;0.1;0.4" dur="6s" repeatCount="indefinite"/>
+      </text>
+    </g>
+    
+    <!-- Third flowing wave -->
+    <g transform="translate(0,500)">
+      <path d="M0,0 Q150,20 300,0 Q450,-20 600,15 Q750,0 900,-15 Q1050,20 1200,0" 
+            stroke="#80c5c5" stroke-width="2" fill="none" opacity="0.4">
+        <animate attributeName="d" 
+                 values="M0,0 Q150,20 300,0 Q450,-20 600,15 Q750,0 900,-15 Q1050,20 1200,0;
+                         M0,10 Q150,30 300,10 Q450,-10 600,25 Q750,10 900,-5 Q1050,30 1200,10;
+                         M0,0 Q150,20 300,0 Q450,-20 600,15 Q750,0 900,-15 Q1050,20 1200,0" 
+                 dur="12s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+  
+  <!-- Mystical particles -->
+  <g class="mystical-particles">
+    <!-- Golden/teal particles with mystical glow -->
+    <circle cx="250" cy="150" r="2" fill="#80c5c5" opacity="0.8" filter="url(#mysticGlow)">
+      <animate attributeName="cy" values="150;120;150" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.3;0.8" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="500" cy="100" r="3" fill="#b3d9d9" opacity="0.6" filter="url(#mysticGlow)">
+      <animate attributeName="cy" values="100;70;100" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="3;1.5;3" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="800" cy="200" r="2.5" fill="#66b2b2" opacity="0.7" filter="url(#mysticGlow)">
+      <animate attributeName="cy" values="200;170;200" dur="7s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0.2;0.7" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="950" cy="120" r="1.5" fill="#4a9f9f" opacity="0.9" filter="url(#mysticGlow)">
+      <animate attributeName="cy" values="120;90;120" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Smaller ambient particles -->
+    <circle cx="150" cy="300" r="1" fill="#80c5c5" opacity="0.4">
+      <animate attributeName="cy" values="300;280;300" dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.1;0.4" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="400" cy="250" r="1.5" fill="#b3d9d9" opacity="0.5">
+      <animate attributeName="cy" values="250;230;250" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="700" cy="350" r="1" fill="#66b2b2" opacity="0.6">
+      <animate attributeName="cy" values="350;320;350" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="1000" cy="280" r="1.2" fill="#4a9f9f" opacity="0.5">
+      <animate attributeName="cy" values="280;260;280" dur="6s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Sacred geometry elements -->
+  <g class="sacred-geometry" opacity="0.2">
+    <!-- Triangle patterns -->
+    <polygon points="200,600 220,570 240,600" fill="none" stroke="#66b2b2" stroke-width="0.8">
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="8s" repeatCount="indefinite"/>
+    </polygon>
+    
+    <polygon points="800,650 830,620 860,650 830,680" fill="none" stroke="#80c5c5" stroke-width="0.6">
+      <animate attributeName="opacity" values="0.15;0.03;0.15" dur="10s" repeatCount="indefinite"/>
+    </polygon>
+    
+    <polygon points="1000,600 1020,580 1040,600 1020,620" fill="none" stroke="#4a9f9f" stroke-width="0.7">
+      <animate attributeName="opacity" values="0.18;0.04;0.18" dur="9s" repeatCount="indefinite"/>
+    </polygon>
+    
+    <!-- Connecting lines with mystical energy -->
+    <path d="M220,585 Q400,550 600,580 Q800,610 1020,600" 
+          stroke="#66b2b2" stroke-width="0.5" fill="none" opacity="0.3">
+      <animate attributeName="opacity" values="0.3;0.05;0.3" dur="12s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Digital-to-organic transition -->
+  <g class="transition-elements" opacity="0.25">
+    <!-- Pixelated elements that become organic -->
+    <rect x="100" y="700" width="8" height="8" fill="#4a9f9f">
+      <animate attributeName="rx" values="0;4;0" dur="6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="120" y="705" width="6" height="6" fill="#66b2b2">
+      <animate attributeName="rx" values="0;3;0" dur="7s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="135" y="708" width="4" height="4" fill="#80c5c5">
+      <animate attributeName="rx" values="0;2;0" dur="5s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Similar pattern on the right -->
+    <rect x="1000" y="720" width="8" height="8" fill="#66b2b2">
+      <animate attributeName="rx" values="0;4;0" dur="8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="1020" y="715" width="6" height="6" fill="#4a9f9f">
+      <animate attributeName="rx" values="0;3;0" dur="6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

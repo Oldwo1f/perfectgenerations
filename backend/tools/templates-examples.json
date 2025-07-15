@@ -1,0 +1,70 @@
+{
+  "templates": [
+    {
+      "name": "Témoignages utilisateur",
+      "description": "Un template épuré pour annoncer des événements spéciaux, mettant en avant un titre, une description et une date, avec des couleurs et polices personnalisables.",
+      "category": "Témoignages",
+      "layout": { "width": 600, "height": 1024 },
+      "tags": ["Témoignages", "annonce"],
+      "isActive": true,
+      "html": "<!DOCTYPE html>\n<html lang=\"fr\" style=\"width: 600px; height: 1024px; overflow: hidden;\">\n<head>\n  <meta charset=\"UTF-8\">\n  <link rel=\"stylesheet\" href=\"https://unpkg.com/@phosphor-icons/web/css/phosphor.css\">\n  <style>\n    body {\n      margin: 0;\n      padding: 0;\n      width: 100%;\n      height: 100%;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background-color: {{brand.primaryColor}};\n      font-family: {{brand.textFont}}, sans-serif;\n      color: {{brand.textColor}};\n    }\n    .container {\n      text-align: center;\n      padding: 20px;\n    }\n    .title {\n      font-size: 48px;\n      font-family: {{brand.titleFont}}, sans-serif;\n      margin-bottom: 20px;\n    }\n    .text {\n      font-size: 24px;\n      margin-bottom: 20px;\n    }\n    .date {\n      font-size: 20px;\n      font-style: italic;\n    }\n    .logo {\n      width: 100px;\n      height: 100px;\n      background-image: url('{{brand.logoUrl}}');\n      background-size: cover;\n      border-radius: 50%;\n      position: absolute;\n      bottom: 20px;\n      right: 20px;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"title\">{{title}}</div>\n    <div class=\"text\">{{text}}</div>\n    <div class=\"date\">{{date}}</div>\n  </div>\n  <div class=\"logo\"></div>\n</body>\n</html>",
+      "variables": {
+        "title": "Titre de l'Événement",
+        "text": "Description de l'événement à venir, avec tous les détails nécessaires pour les participants.",
+        "date": "Samedi 15 août 2025"
+      }
+    },
+    {
+      "name": "Citation inspirante",
+      "description": "Un template élégant pour afficher des citations inspirantes avec un design moderne et minimaliste.",
+      "category": "Citations",
+      "layout": { "width": 800, "height": 600 },
+      "tags": ["Citations", "inspiration", "motivation"],
+      "isActive": true,
+      "html": "<!DOCTYPE html>\n<html lang=\"fr\" style=\"width: 800px; height: 600px; overflow: hidden;\">\n<head>\n  <meta charset=\"UTF-8\">\n  <link rel=\"stylesheet\" href=\"https://unpkg.com/@phosphor-icons/web/css/phosphor.css\">\n  <style>\n    body {\n      margin: 0;\n      padding: 0;\n      width: 100%;\n      height: 100%;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background: linear-gradient(135deg, {{brand.primaryColor}}, {{brand.secondaryColor}});\n      font-family: {{brand.textFont}}, sans-serif;\n      color: {{brand.textColor}};\n    }\n    .container {\n      text-align: center;\n      padding: 40px;\n      max-width: 600px;\n    }\n    .quote {\n      font-size: 32px;\n      font-style: italic;\n      margin-bottom: 30px;\n      line-height: 1.4;\n    }\n    .author {\n      font-size: 18px;\n      font-weight: bold;\n      margin-bottom: 10px;\n    }\n    .source {\n      font-size: 14px;\n      opacity: 0.8;\n    }\n    .quote-icon {\n      font-size: 60px;\n      opacity: 0.3;\n      margin-bottom: 20px;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"container\">\n    <div class=\"quote-icon\">❝</div>\n    <div class=\"quote\">{{quote}}</div>\n    <div class=\"author\">— {{author}}</div>\n    <div class=\"source\">{{source}}</div>\n  </div>\n</body>\n</html>",
+      "variables": {
+        "quote": "Le succès n'est pas final, l'échec n'est pas fatal : c'est le courage de continuer qui compte.",
+        "author": "Winston Churchill",
+        "source": "Discours de 1941"
+      }
+    },
+    {
+      "name": "Annonce promotionnelle",
+      "description": "Template pour annoncer des promotions, offres spéciales ou événements commerciaux avec un design attractif.",
+      "category": "Promotions",
+      "layout": { "width": 1080, "height": 1080 },
+      "tags": ["Promotions", "marketing", "offres"],
+      "isActive": true,
+      "html": "<!DOCTYPE html>\n<html lang=\"fr\" style=\"width: 1080px; height: 1080px; overflow: hidden;\">\n<head>\n  <meta charset=\"UTF-8\">\n  <link rel=\"stylesheet\" href=\"https://unpkg.com/@phosphor-icons/web/css/phosphor.css\">\n  <style>\n    body {\n      margin: 0;\n      padding: 0;\n      width: 100%;\n      height: 100%;\n      background-color: {{brand.primaryColor}};\n      font-family: {{brand.textFont}}, sans-serif;\n      color: {{brand.textColor}};\n      display: flex;\n      flex-direction: column;\n      justify-content: center;\n      align-items: center;\n    }\n    .header {\n      text-align: center;\n      margin-bottom: 40px;\n    }\n    .promo-badge {\n      background-color: #ff4757;\n      color: white;\n      padding: 10px 20px;\n      border-radius: 25px;\n      font-size: 18px;\n      font-weight: bold;\n      margin-bottom: 20px;\n      display: inline-block;\n    }\n    .title {\n      font-size: 56px;\n      font-family: {{brand.titleFont}}, sans-serif;\n      margin-bottom: 20px;\n      text-align: center;\n    }\n    .description {\n      font-size: 24px;\n      text-align: center;\n      margin-bottom: 30px;\n      max-width: 800px;\n    }\n    .offer {\n      background-color: rgba(255, 255, 255, 0.1);\n      padding: 30px;\n      border-radius: 15px;\n      text-align: center;\n      margin-bottom: 30px;\n    }\n    .discount {\n      font-size: 48px;\n      font-weight: bold;\n      color: #ff4757;\n    }\n    .cta {\n      background-color: #ff4757;\n      color: white;\n      padding: 15px 40px;\n      border-radius: 30px;\n      font-size: 20px;\n      font-weight: bold;\n      text-decoration: none;\n      display: inline-block;\n    }\n    .logo {\n      position: absolute;\n      bottom: 30px;\n      right: 30px;\n      width: 80px;\n      height: 80px;\n      background-image: url('{{brand.logoUrl}}');\n      background-size: cover;\n      border-radius: 10px;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"header\">\n    <div class=\"promo-badge\">{{promoType}}</div>\n    <div class=\"title\">{{title}}</div>\n    <div class=\"description\">{{description}}</div>\n  </div>\n  \n  <div class=\"offer\">\n    <div class=\"discount\">{{discount}}</div>\n    <div style=\"font-size: 18px; margin-top: 10px;\">{{offerDetails}}</div>\n  </div>\n  \n  <div class=\"cta\">{{ctaText}}</div>\n  \n  <div class=\"logo\"></div>\n</body>\n</html>",
+      "variables": {
+        "promoType": "OFFRE LIMITÉE",
+        "title": "Réduction exceptionnelle",
+        "description": "Profitez de nos meilleures offres sur une sélection de produits premium",
+        "discount": "-50%",
+        "offerDetails": "Valable jusqu'au 31 décembre 2025",
+        "ctaText": "EN PROFITER MAINTENANT"
+      }
+    },
+    {
+      "name": "Client Review Card",
+      "description": "A sleek testimonial card template displaying a user's review, profile photo, name, and star rating. Perfect for showcasing customer feedback on service or hospitality websites. Colors, fonts, and branding are fully customizable.",
+      "category": "Testimonials",
+      "layout": { "width": 600, "height": 1024 },
+      "tags": ["review", "testimonial", "user", "feedback", "stars"],
+      "isActive": true,
+      "html": "<!DOCTYPE html>\n<html lang=\"en\" style=\"width:600px;height:1024px;overflow:hidden;\">\n<head>\n  <meta charset=\"UTF-8\">\n  <link rel=\"stylesheet\" href=\"https://unpkg.com/@phosphor-icons/web/css/phosphor.css\">\n  <style>\n    body {\n      width: 100%;\n      height: 100%;\n      margin: 0;\n      padding: 0;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n      justify-content: center;\n      background: {{brand.primaryColor}};\n      font-family: {{brand.textFont}}, sans-serif;\n      color: {{brand.textColor}};\n    }\n    .heading {\n      margin-top: 80px;\n      font-family: {{brand.titleFont}}, serif;\n      font-size: 48px;\n      font-style: italic;\n      font-weight: normal;\n      letter-spacing: 1px;\n      color: #fff;\n      text-align: center;\n    }\n    .review-card {\n      background: #fff;\n      border-radius: 20px;\n      box-shadow: 0 4px 16px rgba(0,0,0,0.07);\n      width: 480px;\n      margin: 56px 0;\n      position: relative;\n      padding: 70px 40px 40px 40px;\n      display: flex;\n      flex-direction: column;\n      align-items: center;\n    }\n    .avatar-holder {\n      position: absolute;\n      top: -60px;\n      left: 50%;\n      transform: translateX(-50%);\n      width: 120px;\n      height: 120px;\n      border-radius: 60px;\n      background: #fff;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      box-shadow: 0 4px 16px rgba(0,0,0,0.04);\n    }\n    .avatar-img {\n      width: 104px;\n      height: 104px;\n      border-radius: 52px;\n      object-fit: cover;\n    }\n    .review-text {\n      font-size: 22px;\n      margin: 28px 0 18px 0;\n      text-align: center;\n      color: #222;\n      font-family: {{brand.textFont}}, sans-serif;\n    }\n    .user-name {\n      font-weight: 700;\n      text-transform: uppercase;\n      letter-spacing: 1.5px;\n      margin-bottom: 12px;\n      font-size: 19px;\n      color: #222;\n      font-family: {{brand.titleFont}}, sans-serif;\n    }\n    .stars {\n      margin-bottom: 2px;\n      color: #222;\n      font-size: 28px;\n      letter-spacing: 6px;\n    }\n  </style>\n</head>\n<body>\n  <div class=\"heading\">CLIENT REVIEW</div>\n  <div class=\"review-card\">\n    <div class=\"avatar-holder\">\n      <img class=\"avatar-img\" src=\"{{userAvatarUrl}}\" alt=\"{{userName}} avatar\" />\n    </div>\n    <div class=\"review-text\">{{reviewText}}</div>\n    <div class=\"user-name\">{{userName}}</div>\n    <div class=\"stars\">\n      {{#each (range 1 (add rating 1))}}<i class=\"ph-fill ph-star\"></i>{{/each}}\n    </div>\n  </div>\n</body>\n</html>",
+      "variables": {
+        "userName": { "value": "Hailey Gomez", "type": "text" },
+        "userAvatarUrl": {
+          "value": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&q=80",
+          "type": "imageUrl"
+        },
+        "reviewText": {
+          "value": "A fantastic stay for the price! The home was tidy, well-furnished, and had all the amenities we needed. The check-in process was seamless and the host was very accommodating.",
+          "type": "textarea"
+        },
+        "rating": { "value": 4, "type": "number" }
+      }
+    }
+  ]
+}

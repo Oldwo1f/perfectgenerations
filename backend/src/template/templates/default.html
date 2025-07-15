@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{title}}</title>
+    <style>
+      body {
+          margin: 0;
+          padding: 0;
+          width: {{width}}px;
+          height: {{height}}px;
+          font-family: {{textFont}}, sans-serif;
+          background-color: white;
+          color: {{primaryColor}};
+      }
+      .container {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 2rem;
+          box-sizing: border-box;
+      }
+      .title {
+          font-family: {{titleFont}}, sans-serif;
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          color: {{primaryColor}};
+      }
+      .subtitle {
+          font-family: {{tertiaryFont}}, sans-serif;
+          font-size: 1.5rem;
+          color: {{secondaryColor}};
+          margin-bottom: 2rem;
+      }
+      .logo {
+          max-width: 200px;
+          margin-bottom: 2rem;
+      }
+      .content {
+          text-align: center;
+          color: {{tertiaryColor}};
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      {{#if logoUrl}}
+      <img src="{{logoUrl}}" alt="Logo" class="logo" />
+      {{/if}}
+      <h1 class="title">{{title}}</h1>
+      {{#if subtitle}}
+      <h2 class="subtitle">{{subtitle}}</h2>
+      {{/if}}
+      <div class="content">{{{content}}}</div>
+    </div>
+  </body>
+</html>

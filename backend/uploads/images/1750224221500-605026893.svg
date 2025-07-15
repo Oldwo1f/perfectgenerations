@@ -1,0 +1,146 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient principal - variation avec centre décalé -->
+    <radialGradient id="mainGradient2" cx="65%" cy="30%" r="85%">
+      <stop offset="0%" style="stop-color:#5AD4CC"/>
+      <stop offset="40%" style="stop-color:#2A8B83"/>
+      <stop offset="100%" style="stop-color:#15524F"/>
+    </radialGradient>
+    
+    <!-- Gradients pour les formes organiques -->
+    <radialGradient id="shapeGradient2_1" cx="20%" cy="60%" r="65%">
+      <stop offset="0%" style="stop-color:#7EE8DB;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#2A8B83;stop-opacity:0.15"/>
+    </radialGradient>
+    
+    <radialGradient id="shapeGradient2_2" cx="80%" cy="40%" r="55%">
+      <stop offset="0%" style="stop-color:#5AD4CC;stop-opacity:0.45"/>
+      <stop offset="100%" style="stop-color:#15524F;stop-opacity:0.25"/>
+    </radialGradient>
+    
+    <radialGradient id="shapeGradient2_3" cx="50%" cy="90%" r="45%">
+      <stop offset="0%" style="stop-color:#6FE5D3;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#2A8B83;stop-opacity:0.1"/>
+    </radialGradient>
+    
+    <!-- Filtres pour l'effet de flou -->
+    <filter id="blur2_1">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="35"/>
+    </filter>
+    
+    <filter id="blur2_2">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="28"/>
+    </filter>
+    
+    <filter id="blur2_3">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="32"/>
+    </filter>
+  </defs>
+  
+  <!-- Background principal -->
+  <rect width="100%" height="100%" fill="url(#mainGradient2)"/>
+  
+  <!-- Formes organiques floutées - disposition différente -->
+  <ellipse cx="150" cy="300" rx="200" ry="140" fill="url(#shapeGradient2_1)" filter="url(#blur2_1)" transform="rotate(15 150 300)"/>
+  
+  <ellipse cx="550" cy="150" rx="170" ry="220" fill="url(#shapeGradient2_2)" filter="url(#blur2_2)" transform="rotate(-25 550 150)"/>
+  
+  <ellipse cx="400" cy="480" rx="140" ry="100" fill="url(#shapeGradient2_3)" filter="url(#blur2_3)" transform="rotate(50 400 480)"/>
+  
+  <!-- Forme supplémentaire -->
+  <ellipse cx="700" cy="350" rx="90" ry="130" fill="url(#shapeGradient2_1)" filter="url(#blur2_2)" transform="rotate(-60 700 350)"/>
+  
+  <!-- Overlay subtle pour unifier -->
+  <rect width="100%" height="100%" fill="url(#mainGradient2)" opacity="0.1"/>
+  
+  <!-- Effets technologiques statiques - configuration différente -->
+  <!-- Particules principales - nouveau pattern -->
+  <g opacity="0.65">
+    <circle cx="120" cy="150" r="3.5" fill="#7EE8DB"/>
+    <circle cx="280" cy="90" r="2.8" fill="#5AD4CC"/>
+    <circle cx="620" cy="240" r="4.2" fill="#6FE5D3"/>
+    <circle cx="480" cy="180" r="2.2" fill="#7EE8DB"/>
+    <circle cx="180" cy="400" r="3.8" fill="#5AD4CC"/>
+    <circle cx="680" cy="420" r="3" fill="#6FE5D3"/>
+    <circle cx="350" cy="520" r="2.6" fill="#7EE8DB"/>
+    <circle cx="740" cy="180" r="2.4" fill="#5AD4CC"/>
+    <circle cx="80" cy="480" r="3.2" fill="#6FE5D3"/>
+    <circle cx="420" cy="280" r="2" fill="#7EE8DB"/>
+  </g>
+  
+  <!-- Réseau de connexions - pattern en étoile -->
+  <g opacity="0.45" stroke-width="1.8" fill="none">
+    <line x1="280" y1="90" x2="480" y2="180" stroke="#7EE8DB"/>
+    <line x1="480" y1="180" x2="620" y2="240" stroke="#5AD4CC"/>
+    <line x1="420" y1="280" x2="480" y2="180" stroke="#6FE5D3"/>
+    <line x1="180" y1="400" x2="350" y2="520" stroke="#7EE8DB"/>
+    <line x1="680" y1="420" x2="620" y2="240" stroke="#5AD4CC"/>
+    <line x1="120" y1="150" x2="280" y2="90" stroke="#6FE5D3"/>
+  </g>
+  
+  <!-- Lignes pointillées - motif différent -->
+  <g opacity="0.35" stroke-width="1.2" fill="none" stroke-dasharray="4,8">
+    <line x1="740" y1="180" x2="620" y2="240" stroke="#6FE5D3"/>
+    <line x1="80" y1="480" x2="180" y2="400" stroke="#7EE8DB"/>
+    <line x1="680" y1="420" x2="350" y2="520" stroke="#5AD4CC"/>
+    <line x1="420" y1="280" x2="120" y2="150" stroke="#6FE5D3"/>
+  </g>
+  
+  <!-- Cercles technologiques - positions variées -->
+  <g opacity="0.28" fill="none" stroke-width="2.2">
+    <circle cx="580" cy="380" r="28" stroke="#7EE8DB"/>
+    <circle cx="580" cy="380" r="18" stroke="#7EE8DB" opacity="0.6"/>
+    <circle cx="200" cy="200" r="32" stroke="#5AD4CC"/>
+    <circle cx="200" cy="200" r="42" stroke="#5AD4CC" opacity="0.4"/>
+    <circle cx="650" cy="100" r="22" stroke="#6FE5D3"/>
+    <circle cx="650" cy="100" r="35" stroke="#6FE5D3" opacity="0.3"/>
+  </g>
+  
+  <!-- Grille diagonale -->
+  <g opacity="0.18" stroke-width="0.6" fill="none" stroke="#7EE8DB">
+    <line x1="0" y1="100" x2="800" y2="200"/>
+    <line x1="0" y1="250" x2="800" y2="350"/>
+    <line x1="0" y1="400" x2="800" y2="500"/>
+    <line x1="100" y1="0" x2="300" y2="600"/>
+    <line x1="300" y1="0" x2="500" y2="600"/>
+    <line x1="500" y1="0" x2="700" y2="600"/>
+  </g>
+  
+  <!-- Éléments géométriques - formes variées -->
+  <g opacity="0.35" fill="none" stroke-width="1.8">
+    <polygon points="160,320 175,310 185,325 170,335" stroke="#7EE8DB"/>
+    <rect x="520" y="320" width="22" height="22" transform="rotate(60 531 331)" stroke="#5AD4CC"/>
+    <polygon points="300,450 320,440 325,465 305,470" stroke="#6FE5D3"/>
+    <rect x="50" y="220" width="16" height="16" transform="rotate(-30 58 228)" stroke="#7EE8DB"/>
+    <polygon points="720,280 735,285 730,300 715,295" stroke="#5AD4CC"/>
+  </g>
+  
+  <!-- Particules secondaires - distribution différente -->
+  <g opacity="0.45">
+    <circle cx="240" cy="260" r="1.6" fill="#7EE8DB"/>
+    <circle cx="380" cy="120" r="1.2" fill="#5AD4CC"/>
+    <circle cx="520" cy="380" r="1.9" fill="#6FE5D3"/>
+    <circle cx="160" cy="480" r="1.4" fill="#7EE8DB"/>
+    <circle cx="640" cy="320" r="1.7" fill="#5AD4CC"/>
+    <circle cx="100" cy="320" r="1.1" fill="#6FE5D3"/>
+    <circle cx="750" cy="450" r="1.5" fill="#7EE8DB"/>
+    <circle cx="380" cy="380" r="1.3" fill="#5AD4CC"/>
+    <circle cx="280" cy="180" r="1.8" fill="#6FE5D3"/>
+  </g>
+  
+  <!-- Nœuds de connexion - hubs centraux -->
+  <g opacity="0.55">
+    <circle cx="480" cy="180" r="6" fill="none" stroke="#5AD4CC" stroke-width="2.5"/>
+    <circle cx="420" cy="280" r="5" fill="none" stroke="#7EE8DB" stroke-width="2.5"/>
+    <circle cx="620" cy="240" r="7" fill="none" stroke="#6FE5D3" stroke-width="2.5"/>
+    <circle cx="180" cy="400" r="4.5" fill="none" stroke="#5AD4CC" stroke-width="2.5"/>
+  </g>
+  
+  <!-- Éléments de flux - flèches subtiles -->
+  <g opacity="0.25" fill="#7EE8DB">
+    <polygon points="360,340 370,335 365,345"/>
+    <polygon points="560,160 570,155 565,165"/>
+    <polygon points="220,380 230,375 225,385"/>
+    <polygon points="660,200 670,195 665,205"/>
+  </g>
+</svg>
