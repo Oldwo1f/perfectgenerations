@@ -9,6 +9,7 @@ import { UserModule } from '../user/user.module';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { ApiKeyAuthGuard } from './guards/api-key.guard';
 import { JwtOrApiKeyGuard } from './guards/jwt-or-api.guard';
+import { validateJwtSecret } from '../common/config/validation.config';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { JwtOrApiKeyGuard } from './guards/jwt-or-api.guard';
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_SECRET') || 'fallback-secret',
+        secret: validateJwtSecret(configService),
         signOptions: { expiresIn: '24h' },
       }),
       inject: [ConfigService],

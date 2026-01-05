@@ -13,6 +13,7 @@ import { Template } from '../template/entities/template.entity';
 import { Subscription } from '../billing/entities/subscription.entity';
 import { UsageMonthly } from '../billing/entities/usage-monthly.entity';
 import { UsageStorage } from '../billing/entities/usage-storage.entity';
+import { validateJwtSecret } from '../common/config/validation.config';
 
 @Module({
   imports: [
@@ -27,7 +28,7 @@ import { UsageStorage } from '../billing/entities/usage-storage.entity';
     ]),
     JwtModule.registerAsync({
       useFactory: async (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_SECRET') || 'fallback-secret',
+        secret: validateJwtSecret(configService),
         signOptions: { expiresIn: '24h' },
       }),
       inject: [ConfigService],

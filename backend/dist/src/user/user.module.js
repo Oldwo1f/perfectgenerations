@@ -22,6 +22,7 @@ const template_entity_1 = require("../template/entities/template.entity");
 const subscription_entity_1 = require("../billing/entities/subscription.entity");
 const usage_monthly_entity_1 = require("../billing/entities/usage-monthly.entity");
 const usage_storage_entity_1 = require("../billing/entities/usage-storage.entity");
+const validation_config_1 = require("../common/config/validation.config");
 let UserModule = class UserModule {
 };
 exports.UserModule = UserModule;
@@ -39,7 +40,7 @@ exports.UserModule = UserModule = __decorate([
             ]),
             jwt_1.JwtModule.registerAsync({
                 useFactory: async (configService) => ({
-                    secret: configService.get('JWT_SECRET') || 'fallback-secret',
+                    secret: (0, validation_config_1.validateJwtSecret)(configService),
                     signOptions: { expiresIn: '24h' },
                 }),
                 inject: [config_1.ConfigService],

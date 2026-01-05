@@ -10,6 +10,9 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
+const throttler_1 = require("@nestjs/throttler");
+const throttler_storage_redis_1 = require("@nestjs/throttler-storage-redis");
+const core_1 = require("@nestjs/core");
 const brand_module_1 = require("./brand/brand.module");
 const template_module_1 = require("./template/template.module");
 const generate_module_1 = require("./generate/generate.module");
@@ -18,6 +21,8 @@ const user_module_1 = require("./user/user.module");
 const auth_module_1 = require("./auth/auth.module");
 const dashboard_module_1 = require("./dashboard/dashboard.module");
 const billing_module_1 = require("./billing/billing.module");
+const health_module_1 = require("./health/health.module");
+const logger_module_1 = require("./common/logger/logger.module");
 const brand_entity_1 = require("./brand/entities/brand.entity");
 const template_entity_1 = require("./template/entities/template.entity");
 const image_entity_1 = require("./images/entities/image.entity");
@@ -34,6 +39,29 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
+            }),
+            logger_module_1.LoggerModule,
+            throttler_1.ThrottlerModule.forRootAsync({
+                imports: [config_1.ConfigModule],
+                useFactory: (configService) => {
+                    const redisHost = configService.get('REDIS_HOST', 'localhost');
+                    const redisPort = configService.get('REDIS_PORT', 6379);
+                    const redisPassword = configService.get('REDIS_PASSWORD');
+                    const useRedis = redisHost && redisHost !== 'localhost';
+                    const config = {
+                        ttl: 60,
+                        limit: 100,
+                    };
+                    if (useRedis) {
+                        config.storage = new throttler_storage_redis_1.ThrottlerStorageRedisService({
+                            host: redisHost,
+                            port: redisPort,
+                            password: redisPassword || undefined,
+                        });
+                    }
+                    return config;
+                },
+                inject: [config_1.ConfigService],
             }),
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
@@ -53,6 +81,13 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             dashboard_module_1.DashboardModule,
             billing_module_1.BillingModule,
+            health_module_1.HealthModule,
+        ],
+        providers: [
+            {
+                provide: core_1.APP_GUARD,
+                useClass: throttler_1.ThrottlerGuard,
+            },
         ],
     })
 ], AppModule);

@@ -18,6 +18,7 @@ const user_module_1 = require("../user/user.module");
 const jwt_auth_guard_1 = require("./guards/jwt-auth.guard");
 const api_key_guard_1 = require("./guards/api-key.guard");
 const jwt_or_api_guard_1 = require("./guards/jwt-or-api.guard");
+const validation_config_1 = require("../common/config/validation.config");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
@@ -29,7 +30,7 @@ exports.AuthModule = AuthModule = __decorate([
             jwt_1.JwtModule.registerAsync({
                 imports: [config_1.ConfigModule],
                 useFactory: async (configService) => ({
-                    secret: configService.get('JWT_SECRET') || 'fallback-secret',
+                    secret: (0, validation_config_1.validateJwtSecret)(configService),
                     signOptions: { expiresIn: '24h' },
                 }),
                 inject: [config_1.ConfigService],
