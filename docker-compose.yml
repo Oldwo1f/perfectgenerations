@@ -1,137 +1,134 @@
-version: '3.8'
-
 services:
-  # PostgreSQL Database
-  postgres:
-    image: postgres:16-alpine
-    container_name: perfectgenerations-postgres
-    restart: unless-stopped
-    environment:
-      POSTGRES_DB: ${DB_DATABASE:-perfectgenerations}
-      POSTGRES_USER: ${DB_USERNAME:-postgres}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - perfectgenerations-network
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    # PostgreSQL Database
+    postgres:
+        image: postgres:16-alpine
+        container_name: perfectgenerations-postgres
+        restart: unless-stopped
+        environment:
+            POSTGRES_DB: ${DB_DATABASE:-perfectgenerations}
+            POSTGRES_USER: ${DB_USERNAME:-postgres}
+            POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+        networks:
+            - perfectgenerations-network
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres}"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
 
-  # Redis for caching and rate limiting
-  redis:
-    image: redis:7-alpine
-    container_name: perfectgenerations-redis
-    restart: unless-stopped
-    command: redis-server --requirepass ${REDIS_PASSWORD:-}
-    volumes:
-      - redis_data:/data
-    networks:
-      - perfectgenerations-network
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+    # Redis for caching and rate limiting
+    redis:
+        image: redis:7-alpine
+        container_name: perfectgenerations-redis
+        restart: unless-stopped
+        command: redis-server --requirepass ${REDIS_PASSWORD:-}
+        volumes:
+            - redis_data:/data
+        networks:
+            - perfectgenerations-network
+        healthcheck:
+            test: ["CMD", "redis-cli", "ping"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
 
-  # Backend API
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    container_name: perfectgenerations-backend
-    restart: unless-stopped
-    environment:
-      NODE_ENV: production
-      PORT: 3001
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_USERNAME: ${DB_USERNAME:-postgres}
-      DB_PASSWORD: ${DB_PASSWORD:-postgres}
-      DB_DATABASE: ${DB_DATABASE:-perfectgenerations}
-      JWT_SECRET: ${JWT_SECRET}
-      CORS_ORIGINS: ${CORS_ORIGINS:-https://perfectgeneration.aito-flow.com,https://adminperfectgeneration.aito-flow.com}
-      ENABLE_SWAGGER: ${ENABLE_SWAGGER:-false}
-      LOG_LEVEL: ${LOG_LEVEL:-info}
-      LOG_FORMAT: ${LOG_FORMAT:-json}
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
-    volumes:
-      - backend_uploads:/app/uploads
-      - backend_assets:/app/assets
-    depends_on:
-      postgres:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-    networks:
-      - perfectgenerations-network
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`backendperfectgeneration.aito-flow.com`)"
-      - "traefik.http.routers.backend.entrypoints=websecure"
-      - "traefik.http.routers.backend.tls.certresolver=letsencrypt"
-      - "traefik.http.services.backend.loadbalancer.server.port=3001"
-      - "traefik.docker.network=perfectgenerations-network"
+    # Backend API
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        container_name: perfectgenerations-backend
+        restart: unless-stopped
+        environment:
+            NODE_ENV: production
+            PORT: 3001
+            DB_HOST: postgres
+            DB_PORT: 5432
+            DB_USERNAME: ${DB_USERNAME:-postgres}
+            DB_PASSWORD: ${DB_PASSWORD:-postgres}
+            DB_DATABASE: ${DB_DATABASE:-perfectgenerations}
+            JWT_SECRET: ${JWT_SECRET}
+            CORS_ORIGINS: ${CORS_ORIGINS:-https://perfectgeneration.aito-flow.com,https://adminperfectgeneration.aito-flow.com}
+            ENABLE_SWAGGER: ${ENABLE_SWAGGER:-false}
+            LOG_LEVEL: ${LOG_LEVEL:-info}
+            LOG_FORMAT: ${LOG_FORMAT:-json}
+            REDIS_HOST: redis
+            REDIS_PORT: 6379
+            REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+        volumes:
+            - backend_uploads:/app/uploads
+            - backend_assets:/app/assets
+        depends_on:
+            postgres:
+                condition: service_healthy
+            redis:
+                condition: service_healthy
+        networks:
+            - perfectgenerations-network
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.backend.rule=Host(`backendperfectgeneration.aito-flow.com`)"
+            - "traefik.http.routers.backend.entrypoints=websecure"
+            - "traefik.http.routers.backend.tls.certresolver=letsencrypt"
+            - "traefik.http.services.backend.loadbalancer.server.port=3001"
+            - "traefik.docker.network=perfectgenerations-network"
 
-  # Frontend
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: perfectgenerations-frontend
-    restart: unless-stopped
-    environment:
-      NODE_ENV: production
-      NUXT_PUBLIC_API_BASE: ${NUXT_PUBLIC_API_BASE:-https://backendperfectgeneration.aito-flow.com/api}
-    depends_on:
-      - backend
-    networks:
-      - perfectgenerations-network
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`perfectgeneration.aito-flow.com`)"
-      - "traefik.http.routers.frontend.entrypoints=websecure"
-      - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
-      - "traefik.http.services.frontend.loadbalancer.server.port=3000"
-      - "traefik.docker.network=perfectgenerations-network"
+    # Frontend
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        container_name: perfectgenerations-frontend
+        restart: unless-stopped
+        environment:
+            NODE_ENV: production
+            NUXT_PUBLIC_API_BASE: ${NUXT_PUBLIC_API_BASE:-https://backendperfectgeneration.aito-flow.com/api}
+        depends_on:
+            - backend
+        networks:
+            - perfectgenerations-network
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.frontend.rule=Host(`perfectgeneration.aito-flow.com`)"
+            - "traefik.http.routers.frontend.entrypoints=websecure"
+            - "traefik.http.routers.frontend.tls.certresolver=letsencrypt"
+            - "traefik.http.services.frontend.loadbalancer.server.port=3000"
+            - "traefik.docker.network=perfectgenerations-network"
 
-  # Frontend Admin
-  frontadmin:
-    build:
-      context: ./frontAdmin
-      dockerfile: Dockerfile
-    container_name: perfectgenerations-frontadmin
-    restart: unless-stopped
-    environment:
-      NODE_ENV: production
-      NUXT_PUBLIC_API_BASE: ${NUXT_PUBLIC_API_BASE:-https://backendperfectgeneration.aito-flow.com/api}
-    depends_on:
-      - backend
-    networks:
-      - perfectgenerations-network
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.frontadmin.rule=Host(`adminperfectgeneration.aito-flow.com`)"
-      - "traefik.http.routers.frontadmin.entrypoints=websecure"
-      - "traefik.http.routers.frontadmin.tls.certresolver=letsencrypt"
-      - "traefik.http.services.frontadmin.loadbalancer.server.port=3002"
-      - "traefik.docker.network=perfectgenerations-network"
+    # Frontend Admin
+    frontadmin:
+        build:
+            context: ./frontAdmin
+            dockerfile: Dockerfile
+        container_name: perfectgenerations-frontadmin
+        restart: unless-stopped
+        environment:
+            NODE_ENV: production
+            NUXT_PUBLIC_API_BASE: ${NUXT_PUBLIC_API_BASE:-https://backendperfectgeneration.aito-flow.com/api}
+        depends_on:
+            - backend
+        networks:
+            - perfectgenerations-network
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.frontadmin.rule=Host(`adminperfectgeneration.aito-flow.com`)"
+            - "traefik.http.routers.frontadmin.entrypoints=websecure"
+            - "traefik.http.routers.frontadmin.tls.certresolver=letsencrypt"
+            - "traefik.http.services.frontadmin.loadbalancer.server.port=3002"
+            - "traefik.docker.network=perfectgenerations-network"
 
 volumes:
-  postgres_data:
-    driver: local
-  redis_data:
-    driver: local
-  backend_uploads:
-    driver: local
-  backend_assets:
-    driver: local
+    postgres_data:
+        driver: local
+    redis_data:
+        driver: local
+    backend_uploads:
+        driver: local
+    backend_assets:
+        driver: local
 
 networks:
-  perfectgenerations-network:
-    external: false
-
+    perfectgenerations-network:
+        external: false

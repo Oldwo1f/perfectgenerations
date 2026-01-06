@@ -1,0 +1,59 @@
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+.nuxt/
+.output/
+.nitro/
+.cache/
+.data/
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.fleet/
+.idea/
+.vscode/
+
+# Testing
+coverage/
+.nyc_output/
+*.test.js.snap
+
+# Docker
+*.tar.gz
+
+# Backups
+backups/
+*.sql
+*.sql.gz
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Git
+.git/
+.gitignore.bak
+
